@@ -12,7 +12,7 @@ app.use("/api", indexRouter); // /api/tasks -> url에 /api로 불리면 indexRou
 
 const mongoURI = MONGODB_URI_PROD;
 mongoose
-  .connect(mongoURI, { useNewUrlParser: true }) // 구버전 url을 사용하더라도 연결이 잘 되게 설정
+  .connect(mongoURI, { useUnifiedTopology: true })
   .then(() => console.log(`mongoose connected`))
   .catch((err) => console.log(`db connection fail`, err));
 
