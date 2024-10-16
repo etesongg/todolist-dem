@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const indexRouter = require("./routes/index");
 require("dotenv").config();
 const app = express();
+const PORT = process.env.PORT || 5001;
 const MONGODB_URI_PROD = process.env.MONGODB_URI_PROD;
 app.use(cors());
 app.use(bodyParser.json());
@@ -16,6 +17,6 @@ mongoose
   .then(() => console.log(`mongoose connected`))
   .catch((err) => console.log(`db connection fail`, err));
 
-app.listen(5001, () => {
-  console.log(`server on 5001`);
+app.listen(PORT, () => {
+  console.log(`server on ${PORT}`);
 });
