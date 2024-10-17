@@ -17,8 +17,8 @@ taskController.getTask = async (req, res) => {
   try {
     const taskList = await Task.find({}).select("-__v");
     res.status(200).json({ status: "ok", data: taskList });
-  } catch (err) {
-    res.status(400).json({ status: "fail", error: err });
+  } catch (error) {
+    res.status(400).json({ status: "fail", error });
   }
 };
 
@@ -41,7 +41,7 @@ taskController.deleteTask = async (req, res) => {
     const deleteItem = await Task.findByIdAndDelete(id);
     res.status(200).json({ status: "success", data: deleteItem });
   } catch (error) {
-    res.status(400).json({ status: "fail", error });
+    res.status(400).json({ status: "fail", error: error.message });
   }
 };
 
